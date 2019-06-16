@@ -1,10 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Router, Route} from 'react-router-dom';
+import ImageCreate from './Components/ImageCreate';
+import HomePage from './Components/HomePage';
 
 function App() {
   return (
     <div className="App">
-      App
+      <Router>
+        <div>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/create" exact component={ImageCreate} />
+        </div>
+      </Router>
     </div>
   );
 }
