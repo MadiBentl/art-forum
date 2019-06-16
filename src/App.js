@@ -6,11 +6,13 @@ import ImageDelete from './Components/ImageDelete';
 import ImageEdit from './Components/ImageEdit';
 import ImageGallery from './Components/ImageGallery';
 import ImageView from './Components/ImageView';
+import Header from './Components/Header';
 
 const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
+        <Header />
         <div>
           <Route path="/" exact component={HomePage} />
           <Route path="/create" exact component={ImageCreate} />
