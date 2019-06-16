@@ -1,4 +1,5 @@
 import React from 'react';
+import oauth from '../oauth';
 
 class Header extends React.Component{
   render(){
