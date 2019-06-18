@@ -1,9 +1,9 @@
 import React from 'react';
-import oauth from '../oauth';
+import Oauth from '../Oauth';
 
 class Header extends React.Component{
   render(){
-    return(<div>Header</div>)
+    return(<div><Oauth /></div>)
   }
 }
 
