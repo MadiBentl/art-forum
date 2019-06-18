@@ -1,5 +1,11 @@
+import hello from 'hellojs';
+
 const API_KEY= `94631634763-hnonm7ldimcfbnh9m5t7l5gff4vhsufi.apps.googleusercontent.com`;
 const CLIENT_SECRET=`ofs6XyoDnK_NRm-PdSCbfdA2`;
+
+hello.init({
+  google:API_KEY
+})
 
 /*var GoogleAuth;
 function initClient(){
