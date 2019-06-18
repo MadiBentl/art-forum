@@ -10,7 +10,7 @@ class Oauth extends React.Component{
         'clientId':API_KEY,
         'scope':'profile'
       }).then(function(){
-        console.log(window.gapi.auth2.googleAuth);
+        GoogleAuth = window.gapi.auth2.getAuthInstance().signIn();
       });
     });
   }
@@ -20,15 +20,5 @@ class Oauth extends React.Component{
 }
 
 var GoogleAuth;
-/*function initClient(){
-  window.gapi.client.init({
-    'apiKey':API_KEY,
-    'clientID': CLIENT_SECRET
-  }).then(function(){
-    GoogleAuth = window.gapi.auth2.getAuthInstance();
-  })
-}
-
-initClient();*/
 //GoogleAuth.signIn();
 export default Oauth;
