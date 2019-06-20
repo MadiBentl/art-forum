@@ -12,28 +12,43 @@ class Oauth extends React.Component{
       window.gapi.client.init({
         'clientId':API_KEY,
         'scope':'profile'
-      }).then(function(){
-        var GoogleAuth = window.gapi.auth2.getAuthInstance();
-        //add to state
-        //listening function here
+      }).then(() =>{
+        this.GoogleAuth = window.gapi.auth2.getAuthInstance();
+        this.onAuthChange(this.GoogleAuth.isSignedIn.get());
+        this.GoogleAuth.isSignedIn.listen(this.onAuthChange());
       });
     });
   }
-
-  renderButton(){
-    if (true){
-      console.log("is signed in");
-    }else{
-      console.log("is not signed in");
+  onAuthChange = (isSignedIn) => {
+    if (!isSignedIn){
+      this.props.signIn(this.GoogleAuth.currentUser.Ab.El);
+    }
+    else{
+      this.props.signOut();
+    }
+  }
+  onSignInClick = () =>{
+    this.GoogleAuth.signIn();
+  }
+  onSignOutClick = () =>{
+    this.GoogleAuth.signOut();
+  }
+  renderButton = () => {
+    if (this.props.isSignedIn){
+      return <button onClick={this.onSignOutClick}>Sign Out</button>
+    }
+    else{
+      return <button onClick={this.onSignInClick}>Sign In</button>
     }
   }
 
+
   render(){
-    return<div onClick={this.renderButton()}>oauth</div>
+    return<div>{this.renderButton()}</div>
   }
 }
 const mapStateToProps=(state)=>{
   return {isSignedIn:state.auth.isSignedIn}
 }
-//GoogleAuth.signIn();
+
 export default connect(mapStateToProps, {signIn, signOut})(Oauth);

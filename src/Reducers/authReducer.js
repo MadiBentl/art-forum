@@ -1,4 +1,4 @@
-export default(state={}, action) =>{
+export default(state={signedIn:null, userId:null}, action) =>{
   if (action.type == 'SIGN IN'){
     return {...state, signedIn:true, userId:action.payload}
   }
