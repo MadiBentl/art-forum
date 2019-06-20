@@ -1,5 +1,7 @@
 import React from 'react';
 import {signIn, signOut} from './actions';
+import {connect} from 'react-redux';
+
 const API_KEY= `94631634763-hnonm7ldimcfbnh9m5t7l5gff4vhsufi.apps.googleusercontent.com`;
 const CLIENT_SECRET=`ofs6XyoDnK_NRm-PdSCbfdA2`;
 
@@ -11,21 +13,27 @@ class Oauth extends React.Component{
         'clientId':API_KEY,
         'scope':'profile'
       }).then(function(){
-        this.GoogleAuth = window.gapi.auth2.getAuthInstance();
-        //add to scope
+        var GoogleAuth = window.gapi.auth2.getAuthInstance();
+        //add to state
         //listening function here
       });
     });
   }
 
   renderButton(){
-
+    if (true){
+      console.log("is signed in");
+    }else{
+      console.log("is not signed in");
+    }
   }
 
   render(){
     return<div onClick={this.renderButton()}>oauth</div>
   }
 }
-
+const mapStateToProps=(state)=>{
+  return {isSignedIn:state.auth.isSignedIn}
+}
 //GoogleAuth.signIn();
-export default Oauth;
+export default connect(mapStateToProps, {signIn, signOut})(Oauth);
