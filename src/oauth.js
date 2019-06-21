@@ -21,20 +21,21 @@ class Oauth extends React.Component{
   }
   onAuthChange = (isSignedIn) => {
     if (!isSignedIn){
-      this.props.signIn(this.GoogleAuth.currentUser.Ab.El);
+      this.props.signIn(this.GoogleAuth.currentUser.Ab.El); //update state
     }
     else{
-      this.props.signOut();
+      this.props.signOut(); //update state
     }
   }
   onSignInClick = () =>{
-    this.GoogleAuth.signIn();
+    this.GoogleAuth.signIn(); //oauth fn
   }
   onSignOutClick = () =>{
-    this.GoogleAuth.signOut();
+    console.log("click");
+    this.GoogleAuth.signOut(); //oauth fn
   }
   renderButton = () => {
-    if (this.props.isSignedIn){
+    if (this.props.signedIn){
       return <button onClick={this.onSignOutClick}>Sign Out</button>
     }
     else{
@@ -42,13 +43,12 @@ class Oauth extends React.Component{
     }
   }
 
-
   render(){
     return<div>{this.renderButton()}</div>
   }
 }
 const mapStateToProps=(state)=>{
-  return {isSignedIn:state.auth.isSignedIn}
+  return {signedIn:state.auth.signedIn}
 }
 
 export default connect(mapStateToProps, {signIn, signOut})(Oauth);
