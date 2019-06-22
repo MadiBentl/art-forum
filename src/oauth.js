@@ -20,11 +20,9 @@ class Oauth extends React.Component{
   }
   onAuthChange = (isSignedIn) => {
     if (isSignedIn){
-      console.log(this.GoogleAuth.currentUser.get().getId());
       this.props.signIn(this.GoogleAuth.currentUser.get().getId()); //update state
     }
     else{
-      console.log("is not signed in");
       this.props.signOut(); //update state
     }
   }
@@ -32,10 +30,7 @@ class Oauth extends React.Component{
     this.GoogleAuth.signIn(); //oauth fn
   }
   onSignOutClick = () =>{
-    console.log(this.GoogleAuth.isSignedIn.get());
     this.GoogleAuth.signOut(); //oauth fn
-    console.log(this.GoogleAuth.isSignedIn.get());
-
   }
   renderButton = () => {
     if (this.props.signedIn == null){
