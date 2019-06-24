@@ -10,7 +10,7 @@ class Oauth extends React.Component{
     window.gapi.load('client:auth2',()=>{
       window.gapi.client.init({
         clientId :API_KEY,
-        scope:'email'
+        scope:'profile'
       }).then(() =>{
         this.GoogleAuth = window.gapi.auth2.getAuthInstance();
         this.onAuthChange(this.GoogleAuth.isSignedIn.get());
