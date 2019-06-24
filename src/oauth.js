@@ -36,10 +36,10 @@ class Oauth extends React.Component{
     if (this.props.signedIn == null){
       return null;
     }else if(this.props.signedIn){
-      return <button onClick={this.onSignOutClick}>Sign Out</button>
+      return <div onClick={this.onSignOutClick}>Sign Out</div>
     }
     else{
-      return <button onClick={this.onSignInClick}>Sign In</button>
+      return <div onClick={this.onSignInClick}>Sign In</div>
     }
   }
 
