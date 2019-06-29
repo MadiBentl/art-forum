@@ -1,3 +1,4 @@
+import artwork from '../apis/artwork'
 /*
 Action Types:
 Fetch Image
@@ -11,6 +12,7 @@ Edit Comment
 Delete Comment
 
 */
+
 export const signIn =(userId)=>{
   return({
     type: 'SIGN IN',
@@ -23,3 +25,6 @@ export const signOut =()=>{
     type: 'SIGN OUT'
   })
 }
+export const createArt = formValues => async dispatch => {
+    artwork.post('./artworks', formValues);
+};

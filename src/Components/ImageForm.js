@@ -1,17 +1,23 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
+import {connect} from 'react-redux';
+import {createArt} from '../actions';
 
-let ImageForm = props =>{
-  const {handleSubmit} = props;
+class ImageForm extends React.Component{
+  onSubmit = formValues =>{
+    console.log(formValues);
+    this.props.createArt(formValues);
+  }
+  render(){
   return(
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
       <div className="field required">
         <label htmlFor="imageUrl">Image URL</label>
-        <Field name="imageUrl" component="input" type="text" />
+        <Field name="imageUrl" component="input" type="text" required/>
       </div>
       <div className="field required">
         <label htmlFor="imageTitle">Title</label>
-        <Field name="title" component="input" type="text" />
+        <Field name="title" component="input" type="text" required/>
       </div>
       <div className="field">
         <label htmlFor="description">Description</label>
@@ -23,11 +29,11 @@ let ImageForm = props =>{
       </div>
       <button className="ui secondary button" type="submit">Submit</button>
     </form>
-  )
+  )}
 }
 
-ImageForm = reduxForm({
+const formWrapped = reduxForm({
   form: 'imageUpload'
 })(ImageForm);
 
-export default ImageForm;
+export default connect(null, {createArt})(formWrapped);
