@@ -14,6 +14,7 @@ class ImageForm extends React.Component{
       <div className="field required">
         <label htmlFor="imageUrl">Image URL</label>
         <Field name="imageUrl" component="input" type="text" required/>
+        <Field name="imageUrl" component={renderError} />
       </div>
       <div className="field required">
         <label htmlFor="imageTitle">Title</label>
@@ -31,9 +32,18 @@ class ImageForm extends React.Component{
     </form>
   )}
 }
-
+const validate = formValues =>{
+  const errors = {};
+  if (!/^[A-Z0-9._%+-]+.[jpeg|jpg|gif|png]$/i.test(formValues.imageUrl)){
+    errors.imageUrl = 'Please enter a valid image format';
+  }
+  return errors;
+}
+const renderError = ({meta: {touched, error}}) => {
+  return touched && error ? <span>{error}</span> : false
+}
 const formWrapped = reduxForm({
-  form: 'imageUpload'
+  form: 'imageUpload', validate
 })(ImageForm);
 
 export default connect(null, {createArt})(formWrapped);
