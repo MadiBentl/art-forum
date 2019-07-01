@@ -28,3 +28,7 @@ export const signOut =()=>{
 export const createArt = formValues => async dispatch => {
     artwork.post('./artworks', formValues);
 };
+export const fetchArt = id => async dispatch =>{
+  const response = await artwork.get(`./artworks${id}`);
+  dispatch({type:'FETCH_ART', payload:response.data})
+}
