@@ -32,3 +32,7 @@ export const fetchArt = id => async dispatch =>{
   const response = await artwork.get(`./artworks${id}`);
   dispatch({type:'FETCH_ART', payload:response.data})
 }
+export const fetchImages = () => async dispatch =>{
+  const response = await artwork.get('./artworks');
+  dispatch({type:'FETCH_IMAGES', payload: response.data});
+}
