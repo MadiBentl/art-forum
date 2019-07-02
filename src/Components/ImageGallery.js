@@ -6,15 +6,29 @@ class ImageGallery extends React.Component{
   componentDidMount(){
     this.props.fetchImages();
   }
+  renderImages(){
+    return this.props.images.map(image =>{
+      return(
+        <div key={image.id} className="four wide column">
+          <div className="ui medium image">
+            <img src={image.imageUrl}/>
+          </div>
+        </div>)
+    });
+  }
   render(){
-    console.log(this.props.images);
-    return(<div>Image Gallery</div>);
+    return(<div>
+      <div>Image Gallery</div>
+      <div className="ui grid">
+        {this.renderImages()}
+      </div>
+    </div>);
   }
 }
 
 const mapStateToProps=(state)=>{
   return{
-    images: state.images
+    images: Object.values(state.images)
   }
 }
 
