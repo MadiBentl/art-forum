@@ -3,10 +3,19 @@ import {connect} from 'react-redux';
 import {fetchImages} from '../actions';
 
 class ImageGallery extends React.Component{
+  componentDidMount(){
+    this.props.fetchImages();
+  }
   render(){
-    console.log(this.props.fetchImages());
+    console.log(this.props.images);
     return(<div>Image Gallery</div>);
   }
 }
 
-export default connect(null, {fetchImages})(ImageGallery);
+const mapStateToProps=(state)=>{
+  return{
+    images: state.images
+  }
+}
+
+export default connect(mapStateToProps, {fetchImages})(ImageGallery);
