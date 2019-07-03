@@ -1,9 +1,14 @@
-import artwork from '../apis/artwork'
+import artwork from '../apis/artwork';
+import {
+  SIGN_IN,
+  SIGN_OUT,
+  FETCH_ART,
+  FETCH_IMAGES
+} from './types';
 /*
 Action Types:
+Done: Fetch Images, Add Image
 Fetch Image
-Fetch Images
-Add Image
 Edit Image
 Delete Image
 Fetch Comments
@@ -15,7 +20,7 @@ Delete Comment
 
 export const signIn =(userId)=>{
   return({
-    type: 'SIGN IN',
+    type: SIGN_IN,
     payload: userId
   })
 }
