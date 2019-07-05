@@ -34,9 +34,10 @@ class ImageForm extends React.Component{
 }
 const validate = formValues =>{
   const errors = {};
-  if (/^[A-Z0-9._%//+-]+.(jpeg|jpg|gif|png)$/i.test(formValues.imageUrl)){
+  if (!/\.(jpeg|jpg|gif|png)$/i.test(formValues.imageUrl)){
     errors.imageUrl = 'Please enter a valid image format';
   }
+  console.log(errors);
   return errors;
 }
 const renderError = ({meta: {touched, error}}) => {
