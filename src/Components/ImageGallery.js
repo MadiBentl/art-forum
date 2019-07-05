@@ -8,13 +8,14 @@ class ImageGallery extends React.Component{
   }
   renderImages(){
     return this.props.images.map(image =>{
-      return(
-        <div key={image.id} className="four wide column">
-          <div className="ui medium image">
-            <img src={image.imageUrl}/>
-          </div>
-        </div>)
-    });
+      if (/\.(jpeg|jpg|gif|png)$/i.test(image.imageUrl)){
+        return(
+          <div key={image.id} className="four wide column">
+            <div className="ui medium image">
+              <img src={image.imageUrl}/>
+            </div>
+          </div>)
+        }});
   }
   render(){
     return(<div>
