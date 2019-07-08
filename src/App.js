@@ -1,5 +1,6 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Router, Route} from 'react-router-dom';
+import history from './history';
 import ImageCreate from './Components/ImageCreate';
 import HomePage from './Components/HomePage';
 import ImageDelete from './Components/ImageDelete';
@@ -11,7 +12,7 @@ import Header from './Components/Header';
 const App = () => {
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router history={history}>
         <Header />
         <div>
           <Route path="/" exact component={HomePage} />
@@ -19,9 +20,9 @@ const App = () => {
           <Route path= "/delete" exact component={ImageDelete} />
           <Route path="/edit" exact component={ImageEdit} />
           <Route path="/gallery" exact component={ImageGallery} />
-          <Route path='/view' exact component={ImageView} />
+          <Route path='/view/:imageId' exact component={ImageView} />
         </div>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }

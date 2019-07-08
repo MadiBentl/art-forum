@@ -1,9 +1,30 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {fetchArt} from '../actions';
 
 class ImageView extends React.Component{
+  componentDidMount(){
+    this.imageId = this.props.match.params.imageId;
+    this.props.fetchArt(this.imageId)
+  }
   render(){
-    return(<div>Image View</div>)
+    console.log(this.props);
+    if (this.props.image[this.imageId]){
+      return(
+        <div>
+          <h1>{this.props.image[this.imageId].title}</h1>
+          <img src={this.props.image[this.imageId].imageUrl} />
+          <p></p>
+        </div>)
+    }
+  else{
+    return <p>loading</p>
+  }
+
   }
 }
+const mapStateToProps = (state) =>{
+  return {image:state.images}
+}
 
-export default ImageView;
+export default connect(mapStateToProps, {fetchArt})(ImageView);

@@ -1,4 +1,5 @@
 import artwork from '../apis/artwork';
+import history from '../history'
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -33,10 +34,11 @@ export const signOut =()=>{
 }
 export const createArt = formValues => async dispatch => {
     const response = await artwork.post('./artworks', formValues);
-    dispatch({type:CREATE_ART, payload:response.data})
+    dispatch({type:CREATE_ART, payload:response.data});
+    history.push('/gallery');
 };
 export const fetchArt = id => async dispatch =>{
-  const response = await artwork.get(`./artworks${id}`);
+  const response = await artwork.get(`./artworks/${id}`);
   dispatch({type:FETCH_ART, payload:response.data})
 }
 export const fetchImages = () => async dispatch =>{
