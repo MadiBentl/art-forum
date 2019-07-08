@@ -13,8 +13,10 @@ class ImageView extends React.Component{
       return(
         <div>
           <h1>{this.props.image[this.imageId].title}</h1>
-          <img src={this.props.image[this.imageId].imageUrl} />
-          <p></p>
+          <div className="ui large image">
+            <img src={this.props.image[this.imageId].imageUrl} />
+          </div>
+          <p>{this.props.image[this.imageId].description}</p>
         </div>)
     }
   else{
