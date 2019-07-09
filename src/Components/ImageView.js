@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchArt} from '../actions';
+import {Link} from 'react-router-dom';
 
 class ImageView extends React.Component{
   componentDidMount(){
@@ -16,7 +17,9 @@ class ImageView extends React.Component{
           <div className="ui large image">
             <img src={this.props.image[this.imageId].imageUrl} />
           </div>
-          <p>{this.props.image[this.imageId].description}</p>
+          <div>
+            <p>{this.props.image[this.imageId].description}</p>
+          </div>
         </div>)
     }
   else{

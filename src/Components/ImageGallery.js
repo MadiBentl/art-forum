@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchImages} from '../actions';
+import {Link} from 'react-router-dom';
 
 class ImageGallery extends React.Component{
   componentDidMount(){
@@ -11,9 +12,11 @@ class ImageGallery extends React.Component{
       if (/\.(jpeg|jpg|gif|png)$/i.test(image.imageUrl)){
         return(
           <div key={image.id} className="four wide column">
-            <div className="ui medium image">
-              <img src={image.imageUrl}/>
-            </div>
+            <Link to={`/view/`+ image.id}>
+              <div className="ui medium image">
+                <img src={image.imageUrl}/>
+              </div>
+            </Link>
           </div>)
         }});
   }
