@@ -21,6 +21,7 @@ class ImageGallery extends React.Component{
         }});
   }
   render(){
+    this.props.images.reverse();
     return(<div>
       <div>Image Gallery</div>
       <div className="ui grid">
