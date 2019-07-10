@@ -6,19 +6,27 @@ class HomePage extends React.Component{
   componentDidMount(){
     this.props.fetchArt(13);
   }
-  render(){
+  renderMainImage(){
     if (this.props.images[0]){
-      return(<div>
+      return(
         <div>
           <img
+            className="ui large image"
             src={this.props.images[0].imageUrl}
             alt={this.props.images.title}/>
-          </div>
-        <div>Sidebar with 5 most recent images</div>
-        </div>);
+        </div>
+        );
       }else{
         return <div>loading</div>
       }
+  }
+  render(){
+    return(
+      <div>
+        <div>{this.renderMainImage()}</div>
+        <div>Sidebar with 5 most recent images</div>
+      </div>
+    )
   }
 }
 
