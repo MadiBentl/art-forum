@@ -1,18 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchArt} from '../actions';
+import {fetchImages} from '../actions';
 
 class HomePage extends React.Component{
   componentDidMount(){
-    this.props.fetchArt(13);
+    this.props.fetchImages();
+  }
+  generateRandomNumber(){
+    this.randomNumber = Math.floor(Math.random() * this.props.images.length)
   }
   renderMainImage(){
-    if (this.props.images[0]){
+    this.generateRandomNumber();
+    console.log(this.randomNumber)
+    if (this.props.images[this.randomNumber]){
       return(
         <div>
           <img
             className="ui large image"
-            src={this.props.images[0].imageUrl}
+            src={this.props.images[this.randomNumber].imageUrl}
             alt={this.props.images.title}/>
         </div>
         );
@@ -33,4 +38,4 @@ class HomePage extends React.Component{
 const mapStateToProps = state =>{
   return {images:Object.values(state.images)}
 }
-export default connect(mapStateToProps, {fetchArt})(HomePage);
+export default connect(mapStateToProps, {fetchImages})(HomePage);
