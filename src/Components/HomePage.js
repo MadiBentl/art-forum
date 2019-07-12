@@ -7,7 +7,7 @@ class HomePage extends React.Component{
     this.props.fetchImages();
     this.randomNumber = 0;
   }
-  generateRandomNumber = () =>{
+  generateRandomNumber(){
     this.randomNumber = Math.floor(Math.random() * this.props.images.length);
   }
   renderMainImage(){
