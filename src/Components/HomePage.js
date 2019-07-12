@@ -5,14 +5,16 @@ import {fetchImages} from '../actions';
 class HomePage extends React.Component{
   componentDidMount(){
     this.props.fetchImages();
+    this.randomNumber = 0;
   }
-  generateRandomNumber(){
-    this.randomNumber = Math.floor(Math.random() * this.props.images.length)
+  generateRandomNumber = () =>{
+    this.randomNumber = Math.floor(Math.random() * this.props.images.length);
   }
   renderMainImage(){
-    this.generateRandomNumber();
-    console.log(this.randomNumber)
-    if (this.props.images[this.randomNumber]){
+    if (this.randomNumber == 0){
+      this.generateRandomNumber();
+    }
+    if (this.randomNumber){
       return(
         <div>
           <img
