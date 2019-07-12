@@ -10,6 +10,21 @@ class HomePage extends React.Component{
   generateRandomNumber(){
     this.randomNumber = Math.floor(Math.random() * this.props.images.length);
   }
+  generateRecentImages(){
+    if (this.props.images){
+      return (
+        this.props.images.map(image=>{
+          return(
+          <div className="ui small image" key={image.id}>
+            <img src={image.imageUrl} />
+          </div>)
+        })
+      )
+    }
+    else{
+      return <p>loading...</p>
+    }
+  }
   renderMainImage(){
     if (this.randomNumber == 0){
       this.generateRandomNumber();
@@ -29,9 +44,12 @@ class HomePage extends React.Component{
   }
   render(){
     return(
-      <div>
+      <div className="ui stackable grid">
         <div>{this.renderMainImage()}</div>
-        <div>Sidebar with 5 most recent images</div>
+        <div>
+          Latest Cats
+          {this.generateRecentImages()}
+          </div>
       </div>
     )
   }
