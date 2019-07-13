@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchImages} from '../actions';
+import {Link} from 'react-router-dom';
 
 class HomePage extends React.Component{
   componentDidMount(){
@@ -16,7 +17,9 @@ class HomePage extends React.Component{
         this.props.images.map(image=>{
           return(
           <div className="ui medium image" key={image.id}>
-            <img src={image.imageUrl} />
+            <Link to={`/view/${image.id}`}>
+              <img src={image.imageUrl} />
+            </Link>
           </div>)
         })
       )
@@ -32,10 +35,12 @@ class HomePage extends React.Component{
     if (this.randomNumber){
       return(
         <div>
-          <img
-            className="ui large image"
-            src={this.props.images[this.randomNumber].imageUrl}
-            alt={this.props.images.title}/>
+          <Link to={`/view/${this.props.images[this.randomNumber].id}`}>
+            <img
+              className="ui large image"
+              src={this.props.images[this.randomNumber].imageUrl}
+              alt={this.props.images[this.randomNumber].title}/>
+            </Link>
         </div>
         );
       }else{
