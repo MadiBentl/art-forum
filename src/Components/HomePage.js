@@ -15,7 +15,7 @@ class HomePage extends React.Component{
       return (
         this.props.images.map(image=>{
           return(
-          <div className="ui small image" key={image.id}>
+          <div className="ui medium image" key={image.id}>
             <img src={image.imageUrl} />
           </div>)
         })
@@ -44,13 +44,14 @@ class HomePage extends React.Component{
   }
   render(){
     return(
+      <div className="ui basic segment">
       <div className="ui stackable grid">
-        <div>{this.renderMainImage()}</div>
-        <div>
-          Latest Cats
+        <div className="eleven wide column">{this.renderMainImage()}</div>
+        <div className="five wide column">
+          <h3>Latest Cats</h3>
           {this.generateRecentImages()}
           </div>
-      </div>
+      </div></div>
     )
   }
 }
