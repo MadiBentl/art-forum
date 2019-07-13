@@ -13,7 +13,7 @@ class Header extends React.Component{
     return(
       <div className="ui orange inverted menu">
         <Link to="/" className="item">Home</Link>
-        <Link to="/gallery" className="item">Gallery</Link>
+        <Link to="/gallery" className="item">Cat Gallery</Link>
         <div className="right menu">
           {this.renderAddImageLink()}
           <div className="item">
