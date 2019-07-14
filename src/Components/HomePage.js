@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 class HomePage extends React.Component{
   componentDidMount(){
     this.props.fetchImages();
-    this.randomNumber = 0;
+    this.randomNumber = null;
   }
   generateRandomNumber(){
     this.randomNumber = Math.floor(Math.random() * this.props.images.length);
@@ -29,10 +29,11 @@ class HomePage extends React.Component{
     }
   }
   renderMainImage(){
-    if (this.randomNumber == 0){
+    console.log(this.randomNumber);
+    if (this.randomNumber === null){
       this.generateRandomNumber();
     }
-    if (this.randomNumber){
+    if (this.randomNumber >= 0){
       return(
         <div>
           <Link to={`/view/${this.props.images[this.randomNumber].id}`}>
@@ -44,7 +45,7 @@ class HomePage extends React.Component{
         </div>
         );
       }else{
-        return <div>loading</div>
+        return <div>loading...</div>
       }
   }
   render(){
