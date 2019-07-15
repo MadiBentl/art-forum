@@ -8,6 +8,11 @@ class ImageView extends React.Component{
     this.imageId = this.props.match.params.imageId;
     this.props.fetchArt(this.imageId)
   }
+  renderbutton(){
+    if (this.props.auth.userId == this.props.image[this.imageId].userId){
+      return <div><button className="ui button">Edit</button></div>
+    }
+  }
   render(){
     console.log(this.props);
     if (this.props.image[this.imageId]){
@@ -20,6 +25,7 @@ class ImageView extends React.Component{
           <div>
             <p>{this.props.image[this.imageId].description}</p>
           </div>
+          {this.renderbutton()}
         </div>)
     }
   else{
@@ -29,7 +35,7 @@ class ImageView extends React.Component{
   }
 }
 const mapStateToProps = (state) =>{
-  return {image:state.images}
+  return {image:state.images, auth:state.auth}
 }
 
 export default connect(mapStateToProps, {fetchArt})(ImageView);
