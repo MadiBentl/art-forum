@@ -32,8 +32,9 @@ export const signOut =()=>{
     type: SIGN_OUT
   })
 }
-export const createArt = formValues => async dispatch => {
-    const response = await artwork.post('./artworks', formValues);
+export const createArt = formValues => async (dispatch, getState) => {
+    const {userId} = getState().auth;
+    const response = await artwork.post('./artworks', {...formValues, userId});
     dispatch({type:CREATE_ART, payload:response.data});
     history.push('/gallery');
 };
