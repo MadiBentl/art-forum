@@ -14,7 +14,7 @@ class HomePage extends React.Component{
   generateRecentImages(){
     if (this.props.images){
       return (
-        this.props.images.map(image=>{
+        this.props.images.reverse().map(image=>{
           return(
           <div className="ui medium image" key={image.id}>
             <Link to={`/view/${image.id}`}>
