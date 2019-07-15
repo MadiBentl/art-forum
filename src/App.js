@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/" exact component={HomePage} />
           <Route path="/create" exact component={ImageCreate} />
           <Route path= "/delete" exact component={ImageDelete} />
-          <Route path="/edit:imageId" exact component={ImageEdit} />
+          <Route path="/edit/:imageId" exact component={ImageEdit} />
           <Route path="/gallery" exact component={ImageGallery} />
           <Route path='/view/:imageId' exact component={ImageView} />
         </div>

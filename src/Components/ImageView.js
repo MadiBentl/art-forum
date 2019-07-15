@@ -10,8 +10,13 @@ class ImageView extends React.Component{
   }
   renderbutton(){
     if (this.props.auth.userId == this.props.image[this.imageId].userId){
-      return <div><button className="ui button">Edit</button></div>
-    }
+      return (
+        <div>
+          <Link to = {`/edit/` + this.imageId}>
+            <button className="ui button">Edit</button>
+          </Link>
+        </div>
+    )}
   }
   render(){
     console.log(this.props);
