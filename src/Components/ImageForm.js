@@ -1,12 +1,9 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
-import {connect} from 'react-redux';
-import {createArt} from '../actions';
 
 class ImageForm extends React.Component{
   onSubmit = formValues =>{
-    console.log(formValues);
-    this.props.createArt(formValues);
+    this.props.onSubmit(formValues);
   }
   render(){
   return(
@@ -37,7 +34,6 @@ const validate = formValues =>{
   if (!/\.(jpeg|jpg|gif|png)$/i.test(formValues.imageUrl)){
     errors.imageUrl = 'Please enter a valid image format';
   }
-  console.log(errors);
   return errors;
 }
 const renderError = ({meta: {touched, error}}) => {
@@ -47,4 +43,4 @@ const formWrapped = reduxForm({
   form: 'imageUpload', validate
 })(ImageForm);
 
-export default connect(null, {createArt})(formWrapped);
+export default formWrapped;

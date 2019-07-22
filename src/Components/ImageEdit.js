@@ -1,5 +1,6 @@
 import React from 'react';
 import ImageForm from './ImageForm';
+import _ from 'lodash';
 import {connect} from 'react-redux';
 import {fetchArt} from '../actions';
 
@@ -10,7 +11,9 @@ class ImageEdit extends React.Component{
   }
   render(){
     return(<div className="ui form">
-        <ImageForm onSubmit={() => console.log("submit")}/>
+        <ImageForm
+          onSubmit={() => console.log("submit")}
+          initialValues={_.pick(this.props.images[this.imageId], 'description', 'imageUrl', 'title')}/>
       </div>)
   }
 }

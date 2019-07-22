@@ -1,10 +1,13 @@
 import React from 'react';
 import ImageForm from './ImageForm';
+import {connect} from 'react-redux';
+import {createArt} from '../actions';
 
 
 class ImageCreate extends React.Component{
   submit = values => {
     console.log(values);
+    this.props.createArt(values);
   }
   render(){
     return(
@@ -17,4 +20,4 @@ class ImageCreate extends React.Component{
   }
 }
 
-export default ImageCreate;
+export default connect(null, {createArt})(ImageCreate);
