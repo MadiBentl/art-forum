@@ -5,7 +5,8 @@ import {
   SIGN_OUT,
   FETCH_ART,
   FETCH_IMAGES,
-  CREATE_ART
+  CREATE_ART,
+  EDIT_ART
 } from './types';
 /*
 Action Types:
@@ -45,4 +46,8 @@ export const fetchArt = id => async dispatch =>{
 export const fetchImages = () => async dispatch =>{
   const response = await artwork.get('./artworks');
   dispatch({type:FETCH_IMAGES, payload: response.data});
+}
+export const editArt = (id, formValues) => async dispatch =>{
+  const response = await artwork.get(`./artworks/${id}`);
+  dispatch({type:EDIT_ART, payload: response.data})
 }

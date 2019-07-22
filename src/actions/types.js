@@ -3,3 +3,4 @@ export const SIGN_OUT = "SIGN_OUT";
 export const FETCH_ART = "FETCH_ART";
 export const FETCH_IMAGES = "FETCH_IMAGES";
 export const CREATE_ART = "CREATE_ART";
+export const EDIT_ART = "EDIT_ART";
