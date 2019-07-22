@@ -14,7 +14,7 @@ class HomePage extends React.Component{
   generateRecentImages(){
     if (this.props.images){
       return (
-        this.props.images.reverse().map(image=>{
+        this.props.images.map(image=>{
           return(
           <div className="ui medium image" key={image.id}>
             <Link to={`/view/${image.id}`}>
@@ -63,6 +63,6 @@ class HomePage extends React.Component{
 }
 
 const mapStateToProps = state =>{
-  return {images:Object.values(state.images)}
+  return {images:Object.values(state.images).reverse()}
 }
 export default connect(mapStateToProps, {fetchImages})(HomePage);
