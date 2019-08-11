@@ -52,7 +52,10 @@ class HomePage extends React.Component{
     return(
       <div className="ui basic segment">
       <div className="ui stackable grid">
-        <div className="eleven wide column">{this.renderMainImage()}</div>
+        <div className="eleven wide column">
+        <h1>Cat Gallery</h1>
+        {this.renderMainImage()}
+        </div>
         <div className="five wide column">
           <h3>Latest Cats</h3>
           {this.generateRecentImages()}
