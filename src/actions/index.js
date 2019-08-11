@@ -48,6 +48,7 @@ export const fetchImages = () => async dispatch =>{
   dispatch({type:FETCH_IMAGES, payload: response.data});
 }
 export const editArt = (id, formValues) => async dispatch =>{
-  const response = await artwork.get(`./artworks/${id}`);
-  dispatch({type:EDIT_ART, payload: response.data})
+  const response = await artwork.patch(`./artworks/${id}`, {...formValues});
+  dispatch({type:EDIT_ART, payload: response.data});
+  history.push(`/gallery`);
 }

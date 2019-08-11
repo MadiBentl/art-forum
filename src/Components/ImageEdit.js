@@ -9,14 +9,13 @@ class ImageEdit extends React.Component{
     this.imageId = this.props.match.params.imageId;
     this.props.fetchArt(this.imageId);
   }
-  onSubmit = formValues => {
+  submit = formValues => {
     this.props.editArt(this.imageId, formValues);
   }
   render(){
-    console.log (_.pick(this.props.images[this.imageId], 'description', 'imageUrl', 'title', 'tags'));
     return(<div className="ui form">
         <ImageForm
-          onSubmit={() => console.log("submit")}
+          onSubmit={this.submit}
           initialValues={_.pick(this.props.images[this.imageId], 'description', 'imageUrl', 'title', 'tags')}/>
       </div>)
   }
