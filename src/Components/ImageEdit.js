@@ -13,6 +13,7 @@ class ImageEdit extends React.Component{
     this.props.editArt(this.imageId, formValues);
   }
   render(){
+    console.log (_.pick(this.props.images[this.imageId], 'description', 'imageUrl', 'title', 'tags'));
     return(<div className="ui form">
         <ImageForm
           onSubmit={() => console.log("submit")}

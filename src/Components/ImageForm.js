@@ -40,7 +40,7 @@ const renderError = ({meta: {touched, error}}) => {
   return touched && error ? <span>{error}</span> : false
 }
 const formWrapped = reduxForm({
-  form: 'imageUpload', validate
+  form: 'imageUpload', validate, enableReinitialize:true
 })(ImageForm);
 
 export default formWrapped;
